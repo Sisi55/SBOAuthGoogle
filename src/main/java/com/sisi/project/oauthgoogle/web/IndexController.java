@@ -1,5 +1,6 @@
 package com.sisi.project.oauthgoogle.web;
 
+import com.sisi.project.oauthgoogle.config.auth.LoginUser;
 import com.sisi.project.oauthgoogle.config.auth.dto.SessionUser;
 import com.sisi.project.oauthgoogle.domain.user.User;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +15,12 @@ import javax.servlet.http.HttpSession;
 public class IndexController {
 
 //    private final PostsService postsService;
-    private final HttpSession httpSession;
+//    private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
 //        model.addAttribute("posts", postsService.findAllDesc());
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+//        SessionUser user = (SessionUser) httpSession.getAttribute("user");
         if(user != null){
             model.addAttribute("userName", user.getName());
         }
